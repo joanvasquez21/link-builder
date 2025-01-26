@@ -1,0 +1,22 @@
+package com.search.controller;
+
+public class SearchEntryController {
+	  @Autowired
+	    private SearchEntryService service;
+
+	    @GetMapping
+	    public List<SearchEntry> getAllEntries() {
+	        return service.findAll();
+	    }
+
+	    @PostMapping
+	    public SearchEntry createEntry(@RequestBody SearchEntry entry) {
+	        return service.save(entry);
+	    }
+
+	    @DeleteMapping("/{id}")
+	    public void deleteEntry(@PathVariable Long id) {
+	        service.deleteById(id);
+	    }
+
+}
